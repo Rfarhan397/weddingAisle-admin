@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
+import 'package:wedding_admin/model/res/routes/routes_name.dart';
 import '../../../constant.dart';
+import '../../../screens/auth/splash/splash_screen.dart';
 import '../constant/app_assets.dart';
 import '../constant/app_colors.dart';
 import '../constant/app_icons.dart';
@@ -16,8 +20,8 @@ class CustomNavigationBar extends StatelessWidget {
       backgroundColor: primaryColor,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topRight: Radius.zero, // Remove top-right corner rounding
-          bottomRight: Radius.circular(0), // Ensure bottom-right is also not rounded
+          topRight: Radius.zero,
+          bottomRight: Radius.circular(0),
         ),
       ),
       child: Stack(
@@ -42,9 +46,8 @@ class CustomNavigationBar extends StatelessWidget {
                             AppAssets.logoImage,
                             height: 80,
                           ),
-                          // Icon(Icons.ac_unit_sharp,size: 60,),
                           SizedBox(width: 0.4.w),
-                           const AppTextWidget(
+                          const AppTextWidget(
                             text: 'Wedding Aisle',
                             color: Colors.white,
                             fontSize: 14,
@@ -53,7 +56,7 @@ class CustomNavigationBar extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 3.h,),
+                    SizedBox(height: 3.h),
                   ],
                 ),
                 const DrawerListTile(
@@ -61,15 +64,28 @@ class CustomNavigationBar extends StatelessWidget {
                   screenIndex: 0,
                   title: "Users",
                   svgSrc: "assets/icons/users.svg",
-                ),  const DrawerListTile(
+                ),
+                const DrawerListTile(
                   index: 1,
                   screenIndex: 1,
                   title: "Vendors",
                   svgSrc: "assets/icons/users.svg",
-                ),const DrawerListTile(
+                ),
+                const DrawerListTile(
                   index: 2,
                   screenIndex: 2,
                   title: "Vendors Request",
+                  svgSrc: "assets/icons/users.svg",
+                ),
+                const DrawerListTile(
+                  index: 3,
+                  screenIndex: 3,
+                  title: "Banners",
+                  svgSrc: "assets/icons/users.svg",
+                ), const DrawerListTile(
+                  index: 4,
+                  screenIndex: 4,
+                  title: "Places",
                   svgSrc: "assets/icons/users.svg",
                 ),
                 const SizedBox(
@@ -78,11 +94,26 @@ class CustomNavigationBar extends StatelessWidget {
               ],
             ),
           ),
-
+          Positioned(
+            bottom: 20,
+            right: 20,
+            child: Tooltip(
+              message: 'Logout',
+              child: IconButton(
+                icon: Icon(
+                  Icons.logout,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                onPressed: () {
+                  context.go(RoutesName.splashScreen);
+                  // SystemNavigator.pop();
+                },
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
-
-
 }

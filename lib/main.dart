@@ -4,8 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wedding_admin/providers/action/action_provider.dart';
 import 'package:wedding_admin/providers/auth/auth_provider.dart';
+import 'package:wedding_admin/providers/banner/bannerProvider.dart';
 import 'package:wedding_admin/providers/cloudinary/cloudinary_provider.dart';
 import 'package:wedding_admin/providers/meenuApp/menu_App_controller.dart';
+import 'package:wedding_admin/providers/places/placesProvider.dart';
 import 'package:wedding_admin/providers/textColor/text_color_provider.dart';
 import 'package:wedding_admin/providers/user/user_provider.dart';
 import 'package:wedding_admin/providers/vendors/vendors_provider.dart';
@@ -37,6 +39,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => CloudinaryProvider()),
         ChangeNotifierProvider(create: (_) => TextColorProvider()),
+        ChangeNotifierProvider(create: (_) => BannerProvider()),
+        ChangeNotifierProvider(create: (_) => PlacesProvider()),
 
 
       ],

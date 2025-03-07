@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wedding_admin/constant.dart';
 import 'package:wedding_admin/model/res/widgets/app_text.dart.dart';
+import '../../model/res/constant/app_utils/utils.dart';
 import '../../providers/user/user_provider.dart';
 
 class UserScreen extends StatefulWidget {
@@ -71,7 +72,7 @@ class _UserScreenState extends State<UserScreen> {
                             cells: [
                               DataCell(AppTextWidget(text: user.name ?? "N/A")),
                               DataCell(AppTextWidget(text: user.email ?? "N/A")),
-                              DataCell(AppTextWidget(text: user.createdAt ?? "N/A")),
+                              DataCell(AppTextWidget(text:AppUtils().formatTimestamp(user.createdAt.toString()) ?? "N/A")),
                             ],
                           ),
                         )

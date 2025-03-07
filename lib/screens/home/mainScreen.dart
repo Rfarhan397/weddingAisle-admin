@@ -6,6 +6,8 @@ import 'package:wedding_admin/screens/users/users_screen.dart';
 import 'package:wedding_admin/screens/vendors/vendors_screen.dart';
 import '../../model/res/widgets/navigationBar.dart';
 import '../../vendorsRequest/vendors_request_screen.dart';
+import '../banner/banner_screen.dart';
+import '../place/placeScreen.dart';
 import 'homeScreen.dart';
 
 class MainScreen extends StatelessWidget {
@@ -22,6 +24,11 @@ class MainScreen extends StatelessWidget {
           break;
           case 2:
           screen = VendorsListingRequestScreen();
+          break;
+          case 3:
+          screen = BannerScreen();
+          break; case 4:
+          screen = AddPlacesScreen();
           break;
       default:
           screen = HomeScreen();

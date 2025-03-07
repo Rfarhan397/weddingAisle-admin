@@ -143,3 +143,39 @@ class VendorListing {
     };
   }
 }
+class BannerModel {
+  final String id;
+  final String imageUrl;
+  final String title;
+  final String description;
+  final String timestamp;
+
+  BannerModel({required this.id, required this.imageUrl,  required this.timestamp, required this.title,required this.description});
+
+  factory BannerModel.fromMap(Map<String, dynamic> data, String documentId) {
+    return BannerModel(
+      id: data['id'] ?? '',
+      timestamp: data['timestamp'] ?? '',
+      imageUrl: data['imageUrl'] ?? '',
+      title: data['title'] ?? '',
+      description: data['description'] ?? '',
+    );
+  }
+}
+class PlaceModel {
+  final String id;
+  final String imageUrl;
+  final String city;
+  final String timestamp;
+
+  PlaceModel({required this.id, required this.imageUrl,  required this.timestamp, required this.city,});
+
+  factory PlaceModel.fromMap(Map<String, dynamic> data,) {
+    return PlaceModel(
+      id: data['id'] ?? '',
+      timestamp: data['timestamp'] ?? '',
+      imageUrl: data['imageUrl'] ?? '',
+      city: data['cityName'] ?? '',
+    );
+  }
+}

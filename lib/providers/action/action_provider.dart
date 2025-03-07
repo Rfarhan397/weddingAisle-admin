@@ -1,5 +1,13 @@
 
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../model/res/constant/app_utils/utils.dart';
+import 'dart:html' as html;
+
+import '../cloudinary/cloudinary_provider.dart';
 
 
 class ActionProvider extends ChangeNotifier{
@@ -56,8 +64,7 @@ class ActionProvider extends ChangeNotifier{
     _loadingStates[key] = loading;
     notifyListeners();
   }
-
-
+  
   bool _isFooterHovered = false;
 
   bool get isFooterHovered => _isFooterHovered;
@@ -133,7 +140,30 @@ class ActionProvider extends ChangeNotifier{
 
 
 
+  Future<void> pickAndUploadImage(BuildContext context) async {
+    final html.FileUploadInputElement uploadInput = html.FileUploadInputElement();
+    uploadInput.accept = 'image/*'; // Accept only images
 
+    uploadInput.onChange.listen((e) async {
+      final files = uploadInput.files;
+      if (files!.isEmpty) return;
+
+      final reader = html.FileReader();
+      reader.readAsArrayBuffer(files[0]);
+
+      reader.onLoadEnd.listen((e) async {
+        final bytes = reader.result as Uint8List;
+
+        // Set image data using Provider to display in the container
+        final cloudinaryProvider = Provider.of<CloudinaryProvider>(context, listen: false);
+        cloudinaryProvider.setImageData(bytes);
+
+        AppUtils().showToast(text: 'Image uploaded successfully');
+      });
+    });
+
+    uploadInput.click(); // Trigger the file picker dialog
+  }
 
 
 }

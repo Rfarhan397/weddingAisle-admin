@@ -4,5 +4,8 @@ class RoutesName{
   static const mainScreen = "/mainScreen";
   static const homeScreen = "/homeScreen";
   static const vendorDetails = "/vendorDetails";
+  static const addBanner = "/addBanner";
+  static const bannerDetails = "/bannerDetails";
+  static const addPlace = "/addPlace";
 
 }

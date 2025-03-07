@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:wedding_admin/model/res/constant/app_utils/utils.dart';
 import 'package:wedding_admin/model/res/routes/routes_name.dart';
 import 'package:wedding_admin/screens/vendors/vendor_detail_screen.dart';
 import '../../constant.dart';
@@ -55,7 +56,7 @@ class _VendorsScreenState extends State<VendorsScreen> {
                         columns: [
                           DataColumn(label: AppTextWidget(text:"Name",  fontWeight: FontWeight.bold)),
                           DataColumn(label: AppTextWidget(text:"Email", fontWeight: FontWeight.bold)),
-                          DataColumn(label: AppTextWidget(text:"Created At", fontWeight: FontWeight.bold)),
+                          DataColumn(label: AppTextWidget(text:"Date", fontWeight: FontWeight.bold)),
                           DataColumn(label: AppTextWidget(text:"More", fontWeight: FontWeight.bold)),
                         ],
                         rows: vendorProvider.vendors
@@ -64,7 +65,7 @@ class _VendorsScreenState extends State<VendorsScreen> {
                             cells: [
                               DataCell(AppTextWidget(text:vendor.firstName ?? "N/A"),),
                               DataCell(AppTextWidget(text:vendor.email ?? "N/A")),
-                              DataCell(AppTextWidget(text:vendor.createdAt ?? "N/A")),
+                              DataCell(AppTextWidget(text:AppUtils().formatTimestamp(vendor.createdAt.toString()) ?? "N/A")),
                               DataCell(
                                   onTap: () {
                                     context.push(

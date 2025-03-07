@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wedding_admin/model/res/constant/app_utils/utils.dart';
 import '../../constant.dart';
 import '../../model/res/widgets/app_text.dart.dart';
 import '../../model/user/user_model.dart';
@@ -68,8 +69,8 @@ class VendorDetailsScreen extends StatelessWidget {
                     )),
                   ]),
                   DataRow(cells: [
-                    DataCell(AppTextWidget(text: "Created At")),
-                    DataCell(AppTextWidget(text: vendor.createdAt ?? "N/A")),
+                    DataCell(AppTextWidget(text: "Date")),
+                    DataCell(AppTextWidget(text: AppUtils().formatTimestamp(vendor.createdAt.toString()) ?? "N/A")),
                   ]),
                 ],
               ),
